@@ -1,0 +1,31 @@
+Packages:
+	All lower case
+	
+Classes:
+	Nouns only
+	Camels Case
+	Example: class ImageSprite;
+	
+Interfaces:
+	Camel Case
+	Example: interface RasterDelegate; 
+	
+Methods:
+	Verbs only
+	Camel Case: (with first letter lower cased)
+	Example: runFast(); 
+	
+Variables:
+	Short yet meaningful
+	One letter for temporary variables
+	Should not start with '_' or '$'
+	Examples:
+		char c;
+		float myWidth;
+	
+Constants:
+	All Caps
+	Words spaced with underscores '_'
+	Examples:
+		static final int MAX_WIDTH = 999;
+		static final int GET_THE_CPU = 1;
