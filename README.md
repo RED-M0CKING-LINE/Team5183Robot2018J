@@ -1,4 +1,4 @@
-# Team5183Robot2018Java
+# Team5183Robot2018J
 ## FRC Team 5183, 2018 Robot Java9 Programming README
 
 Java Version: JDK9
