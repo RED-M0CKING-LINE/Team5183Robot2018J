@@ -3,7 +3,6 @@ package org.usfirst.frc.team5183.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.*;  // for testing purposes
 
 
 public class Robot extends IterativeRobot {
@@ -20,7 +19,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void robotInit() {
-		// Robot-Wide initalization code
+		// Robot-Wide initialization code
 		chooser.addDefault("Default Auto", defaultAuton);
 		chooser.addObject("AutonB1", AutonB1);
 		chooser.addObject("AutonB2", AutonB2);
