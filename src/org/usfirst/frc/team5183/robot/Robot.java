@@ -1,12 +1,17 @@
+// @author Ethan A. -- Lead Programmer -- Team 5183, Gaylord Devil Bots
+
 package org.usfirst.frc.team5183.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.XboxController;
 
 
 public class Robot extends IterativeRobot {
 	
+	// TODO import variables from RobotMap.java
 	final String defaultAuton = "Default";
 	final String AutonB1 = "AutonB1";
 	final String AutonB2 = "AutonB2";
