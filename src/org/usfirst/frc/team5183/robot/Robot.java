@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.XboxController;
-
+import edu.wpi.first.wpilibj.Joystick;
 
 public class Robot extends IterativeRobot {
 	
-	// TODO import variables from RobotMap.java
 	final String defaultAuton = "Default";
 	final String AutonB1 = "AutonB1";
 	final String AutonB2 = "AutonB2";
@@ -21,10 +21,32 @@ public class Robot extends IterativeRobot {
 	final String AutonR3 = "AutonR3";
 	String autonSelected;
 	SendableChooser<String> chooser = new SendableChooser<>();
+	
+	Joystick m_driveStick = new Joystick(1); //Joystick on port 1 of the DS
 
 	@Override
 	public void robotInit() {
 		// Robot-Wide initialization code
+		
+		/* ###############  START OF ROBOT MAP  ###############
+		 * With these values, you are able to configure the robot through the code, such as settings for the robot
+		 */ //XXX RobotMap
+		
+		// These specify the PWM channel each motor is using -- MOTOR_ [left or right] [front or back]
+		final int MOTOR_RL = 3; //Rear Left on channel 3
+		final int MOTOR_RR = 0; //Rear Right on channel 0
+		final int MOTOR_FL = 2; //Front Left on channel 2
+		final int MOTOR_FR = 1; //Ront Right on channel 1
+		
+		// Controller Interfaces
+		Joystick m_driveStick = new Joystick(1); //Joystick on port 1 of the DS
+		XboxController m_ctrl = new XboxController(1); //Xbox Controller on port 1 of the DS
+		
+		// Robot Driving Class
+		RobotDrive m_robotDrive = new RobotDrive(MOTOR_RR, MOTOR_FR, MOTOR_FL, MOTOR_RL);
+		
+		/* ###############  END OF ROBOT MAP ############### */
+		
 		chooser.addDefault("Default Auto", defaultAuton);
 		chooser.addObject("AutonB1", AutonB1);
 		chooser.addObject("AutonB2", AutonB2);
@@ -33,6 +55,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("AutonR2", AutonR2);
 		chooser.addObject("AutonR3", AutonR3);
 		SmartDashboard.putData("Auto choices", chooser);
+		
+		RobotDrive m_robotDrive = new RobotDrive(MOTOR_RR, MOTOR_FR, MOTOR_FL, MOTOR_RL);
 	}
 
 	
@@ -82,6 +106,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		// called periodically during operator control
+		m_robotDrive.mecanumDrive_Cartesian(m_driveStick.getX(), m_driveStick.getY(), m_driveStick.getTwist(),0);
+
 	}
 
 	
