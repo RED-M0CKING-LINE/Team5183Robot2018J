@@ -3,6 +3,8 @@
 package org.usfirst.frc.team5183.robot;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -10,13 +12,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 
-	public final String defaultAuton = "Default";
-	public final String AutonB1 = "AutonB1";
-	public final String AutonB2 = "AutonB2";
-	public final String AutonB3 = "AutonB3";
-	public final String AutonR1 = "AutonR1";
-	public final String AutonR2 = "AutonR2";
-	public final String AutonR3 = "AutonR3";
+	public final String defaultAuton = "defaultAuton";
+	public final String AutonLeft = "AutonLeft";
+	public final String AutonCenter = "AutonCenter";
+	public final String AutonRight = "AutonRight";
 	public String autonSelected;
 	public SendableChooser<String> chooser = new SendableChooser<>();
 	
@@ -26,12 +25,10 @@ public class Robot extends IterativeRobot {
 
 		// Autonomous Selection
 		chooser.addDefault("Default Auto", defaultAuton);
-		chooser.addObject("AutonB1", AutonB1);
-		chooser.addObject("AutonB2", AutonB2);
-		chooser.addObject("AutonB3", AutonB3);
-		chooser.addObject("AutonR1", AutonR1);
-		chooser.addObject("AutonR2", AutonR2);
-		chooser.addObject("AutonR3", AutonR3);
+		chooser.addObject("AutonLeft", AutonLeft);
+		chooser.addObject("AutonCenter", AutonCenter);
+		chooser.addObject("AutonRight", AutonRight);
+
 		SmartDashboard.putData("Auto choices", chooser);
 	}
 
@@ -48,30 +45,30 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		// called periodically during autonomous
 		
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if(gameData.charAt(0) == 'L')  // this will check the first character of the game specific data to test for a 'L' or 'R'
+		{
+			//Put left auton code here
+		} else if(gameData.charAt(0) == 'R'){
+			//Put right auton code here
+		} else {
+			//Put default auton code here
+		}
+		
 		switch (autonSelected) {
-		case AutonB1:
-			// Auton Left Blue
+		case AutonLeft:
+			// Auton Left
 			break;
 			
-		case AutonB2:
-			// Auton Center Blue
+		case AutonCenter:
+			// Auton Center
 			break;
 			
-		case AutonB3:
-			// Auton Right Blue
+		case AutonRight:
+			// Auton Right
 			break;
-			
-		case AutonR1:
-			// Auton Left Red
-			break;
-			
-		case AutonR2:
-			// Auton Center Red
-			break;
-			
-		case AutonR3:
-			// Auton Right Red
-			break;
+
 		case defaultAuton:
 		default:
 			// Put default auto code here
@@ -84,7 +81,6 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// called periodically during operator control
 		RobotMap.drive.mecanumDrive_Cartesian(RobotMap.m_driveStick.getX(), RobotMap.m_driveStick.getY(), RobotMap.m_driveStick.getTwist(),0);
-
 	}
 
 	

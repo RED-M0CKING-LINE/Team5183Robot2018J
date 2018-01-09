@@ -23,5 +23,7 @@ public class RobotMap {
 	
 	// Robot Driving Config
 	public final static RobotDrive drive = new RobotDrive(MOTOR_RR, MOTOR_FR, MOTOR_FL, MOTOR_RL); //Motor order for the robot drive class
-
+	
+	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE
+	public final static double WHEEL_SIZE = 5;  // Measured in Centimeters
 }

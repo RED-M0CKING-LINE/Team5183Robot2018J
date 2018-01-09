@@ -1,0 +1,48 @@
+Auton: 15 seconds
+	must pass auton line for 5 pts
+	auton line approx 10 Feet from starting point (120 inches)
+
+
+Switch: 1pt/sec
+	walls are approx 1ft 3in
+	
+	
+
+Scale: 1pt/sec
+	Lowest Point: 4 Feet
+	Default Point: 5 Feet
+	Highest Point: 6 Feet
+
+
+Power Cubes:
+	pre-load one power cube to robot
+	13in - 13in - 11in
+	
+	
+Portal: diagram on page 31 of game manual
+	
+	
+
+Exchange: diagram on page 29 of game manual
+	
+	
+	
+Power-ups:
+	Force: gives ownership of switch and/or scale for 10 seconds
+		1 cube - switch
+		2 cubes - scale
+		3 cubes - switch and scale
+		
+	Boost: 2x scoring for 10 seconds
+		1 cube - switch
+		2 cubes - scale
+		3 cubes - switch and scale
+		
+	Levitate: free climb for one member
+		must have 3 cubes
+
+
+Climb: 30pts
+	must climb higher than 12 inches and maintain height 
+	rung is 7 Feet up and 1ft 1in wide
+	
