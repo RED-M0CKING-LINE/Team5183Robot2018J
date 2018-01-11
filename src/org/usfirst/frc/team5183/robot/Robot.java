@@ -46,28 +46,43 @@ public class Robot extends IterativeRobot {
 		// called periodically during autonomous
 		
 		String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.charAt(0) == 'L')  // this will check the first character of the game specific data to test for a 'L' or 'R'
-		{
-			//Put left auton code here
-		} else if(gameData.charAt(0) == 'R'){
-			//Put right auton code here
-		} else {
-			//Put default auton code here
-		}
-		
+	
 		switch (autonSelected) {
 		case AutonLeft:
 			// Auton Left
-			break;
+			gameData = DriverStation.getInstance().getGameSpecificMessage();
+			if(gameData.charAt(0) == 'L')  // this will check the first character of the game specific data to test for a 'L' or 'R'
+			{
+				//Put left auton code here
+			} else if(gameData.charAt(0) == 'R'){
+				//Put right auton code here
+			} else {
+				//Put default auton code here
+			}
 			
 		case AutonCenter:
 			// Auton Center
-			break;
+			gameData = DriverStation.getInstance().getGameSpecificMessage();
+			if(gameData.charAt(0) == 'L')  // this will check the first character of the game specific data to test for a 'L' or 'R'
+			{
+				//Put left auton code here
+			} else if(gameData.charAt(0) == 'R'){
+				//Put right auton code here
+			} else {
+				//Put default auton code here
+			}
 			
 		case AutonRight:
 			// Auton Right
-			break;
+			gameData = DriverStation.getInstance().getGameSpecificMessage();
+			if(gameData.charAt(0) == 'L')  // this will check the first character of the game specific data to test for a 'L' or 'R'
+			{
+				//Put left auton code here
+			} else if(gameData.charAt(0) == 'R'){
+				//Put right auton code here
+			} else {
+				//Put default auton code here
+			}
 
 		case defaultAuton:
 		default:
