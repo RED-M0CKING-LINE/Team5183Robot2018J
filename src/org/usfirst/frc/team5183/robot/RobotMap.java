@@ -16,6 +16,7 @@ public class RobotMap<Type> {
 	public final static Spark MOTOR_FL = new Spark(2); //Front Left on channel 2
 	public final static Spark MOTOR_FR = new Spark(1); //Front Right on channel 1
 	
+	
 	// Controller Interfaces
 	public final static XboxController m_ctrl = new XboxController(0); //Xbox Controller on port 0 of the DS
 	// Axis raw numbers
@@ -26,9 +27,13 @@ public class RobotMap<Type> {
 	public static final double R_X_AXIS = 4;
 	public static final double R_Y_AXIS = 5;
 	
+	
 	// Robot Driving Config
 	public final static MecanumDrive drive = new MecanumDrive(MOTOR_RR, MOTOR_FR, MOTOR_FL, MOTOR_RL); //Motor order for the robot drive class
 	//NOTE USE drivePolar FOR AUTON
+	public final static double AUTON_MAX_SPEED_F = 0.5; // Max auton speed forward
+	public final static double AUTON_MAX_SPEED_R = -0.5; // Max auton speed backwards
+	
 	
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE
 	public final static double WHEEL_SIZE = 5;  // Measured in Centimeters
