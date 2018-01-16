@@ -8,11 +8,14 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Auton extends IterativeRobot{
 	/*
 	 * This class contains all Auton Conditions
 	 */
+	
+	boolean autonFinished = false;
 	
 	public void autonInit() {
 		// these are what we will type in for the according auton
@@ -62,7 +65,7 @@ public class Auton extends IterativeRobot{
 			}
 			
 		}else {
-			// Default [Drive 12FT stright]
+			// Default [Drive 12FT straight]
 			
 		}
 	}

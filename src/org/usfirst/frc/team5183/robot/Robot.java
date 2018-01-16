@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 		// called periodically during operator control
 		RobotMap.drive.driveCartesian(RobotMap.m_ctrl.getRawAxis(RobotMap.L_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS));
 		//TODO add accelerated inputs: 0-2-4-8-16-32-64-[cap limit]
+		//TODO CHANGE THIS SHIT TO TANK DRIVE BEOCH
 	}
 
 	
