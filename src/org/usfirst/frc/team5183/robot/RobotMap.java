@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
 
-public class RobotMap<Type> {
-	/* 
+public class RobotMap {
+	/*
 	 * With these values, you are able to configure the robot through the code, such as settings for the robot
 	 * //NOTE Left Side Motors Inverted Manually Through PWM On Spark (put it in backwards)
 	 */
@@ -20,12 +20,12 @@ public class RobotMap<Type> {
 	// Controller Interfaces
 	public final static XboxController m_ctrl = new XboxController(0); //Xbox Controller on port 0 of the DS
 	// Axis raw numbers
-	public static final double L_X_AXIS = 0;
-	public static final double L_Y_AXIS = 1;
-	public static final double L_TRIG = 2;
-	public static final double R_TRIG = 3;
-	public static final double R_X_AXIS = 4;
-	public static final double R_Y_AXIS = 5;
+	public static final int L_X_AXIS = 0;
+	public static final int L_Y_AXIS = 1;
+	public static final int L_TRIG = 2;
+	public static final int R_TRIG = 3;
+	public static final int R_X_AXIS = 4;
+	public static final int R_Y_AXIS = 5;
 	
 	
 	// Robot Driving Config
