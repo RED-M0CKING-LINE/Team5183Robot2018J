@@ -13,6 +13,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// Robot-Wide initialization code
+		RobotMap.MOTOR_FL.enableDeadbandElimination(true);
+		RobotMap.MOTOR_FR.enableDeadbandElimination(true);
+		RobotMap.MOTOR_RL.enableDeadbandElimination(true);
+		RobotMap.MOTOR_RR.enableDeadbandElimination(true);
 	}
 
 	
@@ -32,7 +36,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		// called periodically during operator control
-		RobotMap.drive.driveCartesian(RobotMap.m_ctrl.getRawAxis(RobotMap.L_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS));
+		RobotMap.DRIVE.tankDrive(RobotMap.L_Y_AXIS, RobotMap.R_Y_AXIS, true);
 		//TODO add accelerated inputs: 0-2-4-8-16-32-64-[cap limit]
 		//TODO CHANGE THIS SHIT TO TANK DRIVE BEOCH
 	}

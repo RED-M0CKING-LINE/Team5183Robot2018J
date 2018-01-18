@@ -1,8 +1,9 @@
 package org.usfirst.frc.team5183.robot;
 
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class RobotMap {
 	/*
@@ -29,12 +30,13 @@ public class RobotMap {
 	
 	
 	// Robot Driving Config
-	public final static MecanumDrive drive = new MecanumDrive(MOTOR_RR, MOTOR_FR, MOTOR_FL, MOTOR_RL); //Motor order for the robot drive class
-	//NOTE USE drivePolar FOR AUTON
+	public final static SpeedControllerGroup MOTORS_L = new SpeedControllerGroup(MOTOR_FL, MOTOR_RL);
+	public final static SpeedControllerGroup MOTORS_R = new SpeedControllerGroup(MOTOR_FR, MOTOR_RR);
+	public final static DifferentialDrive DRIVE = new DifferentialDrive(MOTORS_L, MOTORS_R); //Motor order for the robot drive class
+	public final static double MAXOUTPUT = 0.9;
 	public final static double AUTON_MAX_SPEED_F = 0.5; // Max auton speed forward
 	public final static double AUTON_MAX_SPEED_R = -0.5; // Max auton speed backwards
 	
 	
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE
-	public final static double WHEEL_SIZE = 5;  // Measured in Centimeters
 }

@@ -4,13 +4,13 @@ import org.usfirst.frc.team5183.robot.RobotMap;
 import org.usfirst.frc.team5183.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 
-public class Auton extends IterativeRobot{
+public class Auton extends Robot{
 	/*
 	 * This class contains all Auton Conditions
 	 */
