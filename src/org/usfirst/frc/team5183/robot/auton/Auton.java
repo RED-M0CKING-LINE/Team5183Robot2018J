@@ -4,11 +4,9 @@ import org.usfirst.frc.team5183.robot.RobotMap;
 import org.usfirst.frc.team5183.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
 
 public class Auton extends Robot{
 	/*
@@ -18,13 +16,13 @@ public class Auton extends Robot{
 	boolean autonFinished = false;
 	
 	public void autonInit() {
-		// these are what we will type in for the according auton
-		final String defaultAuton = "default";
-		final String AutonLeft = "Left";
-		final String AutonCenter = "Center";
-		final String AutonRight = "Right";
 		
-		SendableChooser<String> chooser = new SendableChooser<>();
+	    Command autonomousCommand;
+	    SendableChooser<Command> chooser = new SendableChooser<>();
+	    autonomousCommand = chooser.getSelected();
+	    
+		
+		
 		// autoSelected = chooser.getSelected();
 		String autonSelected = SmartDashboard.getString("Auto Selector", defaultAuton);
 		System.out.println("Auto selected: " + autonSelected);

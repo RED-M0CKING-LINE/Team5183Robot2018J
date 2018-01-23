@@ -3,7 +3,6 @@ package org.usfirst.frc.team5183.robot;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class RobotMap {
 	/*
@@ -12,10 +11,8 @@ public class RobotMap {
 	 */
 
 	// These specify the PWM channel each motor is using -- MOTOR_ [left or right] [front or back]
-	public final static Spark MOTOR_RL = new Spark(3); //Rear Left on channel 3
-	public final static Spark MOTOR_RR = new Spark(0); //Rear Right on channel 0
-	public final static Spark MOTOR_FL = new Spark(2); //Front Left on channel 2
-	public final static Spark MOTOR_FR = new Spark(1); //Front Right on channel 1
+	public final static Spark MOTORS_L = new Spark(0); //Left side motors on channel 0
+	public final static Spark MOTORS_R = new Spark(1); //Right side motors on channel 1'
 	
 	
 	// Controller Interfaces
@@ -30,13 +27,13 @@ public class RobotMap {
 	
 	
 	// Robot Driving Config
-	public final static SpeedControllerGroup MOTORS_L = new SpeedControllerGroup(MOTOR_FL, MOTOR_RL);
-	public final static SpeedControllerGroup MOTORS_R = new SpeedControllerGroup(MOTOR_FR, MOTOR_RR);
 	public final static DifferentialDrive DRIVE = new DifferentialDrive(MOTORS_L, MOTORS_R); //Motor order for the robot drive class
 	public final static double MAXOUTPUT = 0.9;
 	public final static double AUTON_MAX_SPEED_F = 0.5; // Max auton speed forward
 	public final static double AUTON_MAX_SPEED_R = -0.5; // Max auton speed backwards
 	
 	
+	// Pneumatics - give them some slack, their just kinda bloated
+
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE
 }
