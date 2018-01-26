@@ -51,7 +51,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		// called periodically during operator control
-		RobotMap.DRIVE.tankDrive(RobotMap.L_Y_AXIS, RobotMap.R_Y_AXIS, true);
+		RobotMap.DRIVE.arcadeDrive(RobotMap.L_Y_AXIS, RobotMap.R_X_AXIS, true);
 	}
 
 	
