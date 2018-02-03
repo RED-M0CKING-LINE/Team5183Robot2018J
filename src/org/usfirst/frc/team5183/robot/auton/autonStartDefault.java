@@ -1,15 +1,16 @@
 package org.usfirst.frc.team5183.robot.auton;
 
+import org.usfirst.frc.team5183.robot.commands.*;
+import org.usfirst.frc.team5183.robot.RobotMap;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team5183.robot.commands.Motors;
-import org.usfirst.frc.team5183.robot.commands.Pneumatics;
 
 /**
  *
  */
-public class autonStartLeft extends Command {
+public class autonStartDefault extends Command {
 
-    public autonStartLeft() {
+    public autonStartDefault() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,6 +21,8 @@ public class autonStartLeft extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Motors M = new Motors();
+    	M.move(RobotMap.AUTON_MAX_SPEED_F, RobotMap.AUTON_MAX_SPEED_F, 5);
     }
 
     // Make this return true when this Command no longer needs to run execute()

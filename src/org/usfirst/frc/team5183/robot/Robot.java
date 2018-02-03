@@ -26,10 +26,10 @@ public class Robot extends IterativeRobot {
 		
 		// Auton Selection Configuration
 		autonChooser = new SendableChooser<Command>();
-		autonChooser.addDefault("Start Default Auton", ); // default start auton option
-		autonChooser.addObject("Start Left Auton", ); // left start auton option
-		autonChooser.addObject("Start Center Auton", ); // center start auton option
-		autonChooser.addObject("Start Right Auton", ); // right start auton option
+		autonChooser.addDefault("Start Default Auton", new autonStartDefault()); // default start auton option
+		autonChooser.addObject("Start Left Auton", new autonStartLeft()); // left start auton option
+		autonChooser.addObject("Start Center Auton", new autonStartCenter()); // center start auton option
+		autonChooser.addObject("Start Right Auton", new autonStartCenter()); // right start auton option
 		SmartDashboard.putData("Autonomous Mode Chooser", autonChooser);
 		//TODO GET THE SELECTION FOR STARTING POSITION FROM THE SMART DASHBOARD AND MAKE IT WORK
 	}

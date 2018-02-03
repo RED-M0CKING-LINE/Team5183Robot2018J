@@ -27,7 +27,7 @@ public class RobotMap {
 	
 	
 	// Robot Driving Config
-	/** SIM Specs
+	/** CIM Motor Specs
 	 * Gear Box Ratio: 10.71:1
 	 * No load RPM: 5,310
 	 */

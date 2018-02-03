@@ -1,3 +1,8 @@
+Wheel Circumference Approx: 18.85 inches
+
+
+
+Java Naming Conventions:
 Packages:
 	All lower case
 	
