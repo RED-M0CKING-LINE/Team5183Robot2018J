@@ -14,6 +14,35 @@ public class Auton extends Robot{
 	 */
 	
 	boolean autonFinished = false;
+	String gameData = DriverStation.getInstance().getGameSpecificMessage();
+	
+	public boolean autonStartLeft() {
+		if gameData
+		return true;
+	}
+	
+	public boolean autonStartCenter() {
+		return true;
+	}
+	
+	public boolean autonStartRight() {
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 /*	
 *	public void autonInit() {
@@ -60,15 +89,4 @@ public class Auton extends Robot{
 *	}
 */
 	
-	public boolean autonStartLeft() {
-		return true;
-	}
-	
-	public boolean autonStartCenter() {
-		return true;
-	}
-	
-	public boolean autonStartRight() {
-		return true;
-	}
 }

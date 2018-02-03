@@ -9,7 +9,8 @@ public class RobotMap {
 	 * With these values, you are able to configure the robot through the code, such as settings for the robot
 	 */
 
-	// These specify the PWM channel each motor is using -- MOTOR_ [left or right] [front or back]
+	// PWM Channels
+	// MOTOR_ [left or right] [front or back]
 	public final static Spark MOTORS_L = new Spark(0); //Left side motors on channel 0
 	public final static Spark MOTORS_R = new Spark(1); //Right side motors on channel 1'
 	
@@ -26,6 +27,10 @@ public class RobotMap {
 	
 	
 	// Robot Driving Config
+	/** SIM Specs
+	 * Gear Box Ratio: 10.71:1
+	 * No load RPM: 5,310
+	 */
 	public final static DifferentialDrive DRIVE = new DifferentialDrive(MOTORS_L, MOTORS_R); //Motor order for the robot drive class
 	public final static double MAXOUTPUT = 0.9;
 	public final static double AUTON_MAX_SPEED_F = 0.5; // Max auton speed forward
