@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5183.robot.auton;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team5183.robot.commands.Motors;
+import org.usfirst.frc.team5183.robot.commands.Pneumatics;
 
 /**
  *
@@ -32,5 +34,7 @@ public class autonStartLeft extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	println("autonStartLeft has been interrupted.");
+    	
     }
 }

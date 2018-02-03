@@ -10,14 +10,14 @@ public class RobotMap {
 	 */
 
 	// PWM Channels
-	// MOTOR_ [left or right] [front or back]
+	/** MOTOR_ [left or right] [front or back] **/
 	public final static Spark MOTORS_L = new Spark(0); //Left side motors on channel 0
 	public final static Spark MOTORS_R = new Spark(1); //Right side motors on channel 1'
 	
 	
 	// Controller Interfaces
 	public final static XboxController m_ctrl = new XboxController(0); //Xbox Controller on port 0 of the DS
-	// Axis raw numbers - don't touch these
+	/** Axis raw numbers - don't touch these **/
 	public static final int L_X_AXIS = 0;
 	public static final int L_Y_AXIS = 1;
 	public static final int L_TRIG = 2;
