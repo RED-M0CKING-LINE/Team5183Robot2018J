@@ -14,7 +14,8 @@ public class Pneumatics {
 	boolean pressureSwitch = c.getPressureSwitchValue();
 	double current = c.getCompressorCurrent();
 	
-	private void start() { // starts all the pneumatic systems
+	public void start() { // starts all the pneumatic systems
 		c.setClosedLoopControl(true);
+		
 	} 
 }
