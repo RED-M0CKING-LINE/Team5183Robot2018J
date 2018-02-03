@@ -24,12 +24,12 @@ public class Robot extends IterativeRobot {
 		RobotMap.MOTORS_R.enableDeadbandElimination(true);
 		
 		// Auton Selection Configuration
-//		autonChooser = new SendableChooser<Command>();
-//		autonChooser.addDefault("Start Default Auton", ); // default start auton option
-//		autonChooser.addObject("Start Left Auton", ); // left start auton option
-//		autonChooser.addObject("Start Center Auton", ); // center start auton option
-//		autonChooser.addObject("Start Right Auton", ); // right start auton option
-//		SmartDashboard.putData("Autonomous Mode Chooser", autonChooser);
+		autonChooser = new SendableChooser<Command>();
+		autonChooser.addDefault("Start Default Auton", ); // default start auton option
+		autonChooser.addObject("Start Left Auton", ); // left start auton option
+		autonChooser.addObject("Start Center Auton", ); // center start auton option
+		autonChooser.addObject("Start Right Auton", ); // right start auton option
+		SmartDashboard.putData("Autonomous Mode Chooser", autonChooser);
 		//TODO GET THE SELECTION FOR STARTING POSITION FROM THE SMART DASHBOARD AND MAKE IT WORK
 	}
 
@@ -37,8 +37,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// autonomous initialization code
-//		autonCommand = (Command) autonChooser.getSelected();
-//		autonCommand.start();
+		autonCommand = (Command) autonChooser.getSelected();
+		autonCommand.start();
 	}
 
 	
