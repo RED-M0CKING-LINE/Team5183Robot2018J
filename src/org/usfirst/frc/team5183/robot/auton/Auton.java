@@ -17,7 +17,6 @@ public class Auton extends Robot{
 	String gameData = DriverStation.getInstance().getGameSpecificMessage();
 	
 	public boolean autonStartLeft() {
-		if(gameData.charAt(0))
 		return true;
 	}
 	
