@@ -22,6 +22,7 @@ public class Robot extends IterativeRobot {
 		// Robot-Wide initialization code
 		RobotMap.MOTORS_L.enableDeadbandElimination(true);
 		RobotMap.MOTORS_R.enableDeadbandElimination(true);
+		RobotMap.MOTORS_L.setInverted(true);
 		
 		// Auton Selection Configuration
 		autonChooser = new SendableChooser<Command>();

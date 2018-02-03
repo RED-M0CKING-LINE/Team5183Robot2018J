@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class RobotMap {
 	/*
 	 * With these values, you are able to configure the robot through the code, such as settings for the robot
-	 * //NOTE Left Side Motors Inverted Manually Through PWM On Spark (put it in backwards)
 	 */
 
 	// These specify the PWM channel each motor is using -- MOTOR_ [left or right] [front or back]
@@ -17,7 +16,7 @@ public class RobotMap {
 	
 	// Controller Interfaces
 	public final static XboxController m_ctrl = new XboxController(0); //Xbox Controller on port 0 of the DS
-	// Axis raw numbers
+	// Axis raw numbers - don't touch these
 	public static final int L_X_AXIS = 0;
 	public static final int L_Y_AXIS = 1;
 	public static final int L_TRIG = 2;
