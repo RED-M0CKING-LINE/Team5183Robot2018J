@@ -21,6 +21,9 @@ public class Pneumatics extends Subsystem {
 	public void start() { // starts all the pneumatic systems
 		c.setClosedLoopControl(true);
 	} 
+	
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
     @Override
     public void initDefaultCommand() {
     }

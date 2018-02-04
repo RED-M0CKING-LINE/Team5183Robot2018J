@@ -1,6 +1,6 @@
-package org.usfirst.frc5183.RobotBuilder;
+package org.usfirst.frc.team5183.robot;
 
-import org.usfirst.frc5183.RobotBuilder.commands.*;
+import org.usfirst.frc.team5183.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 

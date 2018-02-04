@@ -14,13 +14,11 @@ public class RobotMap {
 
 	// PWM Channels
 	/** MOTOR_ [left or right] [front or back] **/
-	public final static Spark MOTORS_L = new Spark(0); //Left side motors on channel 0
-	public final static Spark MOTORS_R = new Spark(1); //Right side motors on channel 1
+	public static Spark MOTORS_L; //Left side motors on channel 0
+	public static Spark MOTORS_R; //Right side motors on channel 1
 	
 	// Gyro
-	public static AnalogGyro gyro = new AnalogGyro(0);
-	
-	
+	public static AnalogGyro gyro;
 	
 	// Controller Interfaces
 	public final static XboxController m_ctrl = new XboxController(0); //Xbox Controller on port 0 of the DS
@@ -38,16 +36,30 @@ public class RobotMap {
 	 * Gear Box Ratio: 10.71:1
 	 * No load RPM: 5,310
 	 */
-	public final static DifferentialDrive DRIVE = new DifferentialDrive(MOTORS_L, MOTORS_R); //Motor order for the robot drive class
-	public final static double MAXOUTPUT = 0.9;
-	public final static double AUTON_MAX_SPEED_F = 0.5; // Max auton speed forward
-	public final static double AUTON_MAX_SPEED_R = -0.5; // Max auton speed backwards
-	
+	public static DifferentialDrive DRIVE; //Motor order for the robot drive class
+	public static double MAXOUTPUT;
+	public static double AUTON_MAX_SPEED_F; // Max auton speed forward
+	public static double AUTON_MAX_SPEED_R; // Max auton speed backwards
 	
 	// Pneumatics - give them some slack, their just kinda bloated
-	public static Compressor compressor = new Compressor(0);
-	public static DoubleSolenoid piston1 = new DoubleSolenoid(1, 1, 2);
-	public static DoubleSolenoid piston2 = new DoubleSolenoid(2, 3, 4);
+	public static Compressor compressor;
+	public static DoubleSolenoid piston1;
+	public static DoubleSolenoid piston2;
+	
+	public static void init() {
+		/** this method initializes all of the variables for the entire robot system **/
+		
+		MOTORS_L = new Spark(0); //Left side motors on channel 0
+		MOTORS_R = new Spark(1); //Right side motors on channel 1
+		gyro = new AnalogGyro(0);
+		DRIVE = new DifferentialDrive(MOTORS_L, MOTORS_R);
+		MAXOUTPUT = 0.9;
+		AUTON_MAX_SPEED_F = 0.5;
+		AUTON_MAX_SPEED_R = -0.5;
+		compressor = new Compressor(0);
+		piston1 = new DoubleSolenoid(1, 1, 2);
+		piston2 = new DoubleSolenoid(2, 3, 4);
+	}
 	
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE
 }
