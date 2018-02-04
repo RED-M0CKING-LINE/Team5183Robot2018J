@@ -4,6 +4,7 @@ package org.usfirst.frc.team5183.robot;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
 import org.usfirst.frc.team5183.robot.auton.*;
+import org.usfirst.frc5183.RobotBuilder.OI;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,12 +17,21 @@ public class Robot extends IterativeRobot {
     
 	Command autonCommand;
 	SendableChooser<Command> autonChooser;
-	
+    public static OI oi;
+    
 	@Override
 	public void robotInit() {
+        RobotMap.init();
+        oi = new OI();
+
 		// Robot-Wide initialization code
 		RobotMap.MOTORS_L.enableDeadbandElimination(true);
 		RobotMap.MOTORS_R.enableDeadbandElimination(true);
+		RobotMap.MOTORS_L.setSafetyEnabled(true);
+		RobotMap.MOTORS_R.setSafetyEnabled(true);
+		RobotMap.MOTORS_L.setExpiration(0.1);
+		RobotMap.MOTORS_R.setExpiration(0.1);
+		
 		RobotMap.MOTORS_L.setInverted(true);
 		
 		// Auton Selection Configuration
@@ -49,13 +59,21 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
+    @Override
+    public void teleopInit() {
+    }
 
 	@Override
 	public void teleopPeriodic() {
 		// called periodically during operator control
+        Scheduler.getInstance().run();
 		RobotMap.DRIVE.arcadeDrive(RobotMap.L_Y_AXIS, RobotMap.R_X_AXIS, true);
 	}
-
+	
+    @Override
+    public void disabledPeriodic() {
+        Scheduler.getInstance().run();
+    }
 	
 	@Override
 	public void testPeriodic() {

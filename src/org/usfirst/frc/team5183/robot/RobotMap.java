@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5183.robot;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -12,7 +15,11 @@ public class RobotMap {
 	// PWM Channels
 	/** MOTOR_ [left or right] [front or back] **/
 	public final static Spark MOTORS_L = new Spark(0); //Left side motors on channel 0
-	public final static Spark MOTORS_R = new Spark(1); //Right side motors on channel 1'
+	public final static Spark MOTORS_R = new Spark(1); //Right side motors on channel 1
+	
+	// Gyro
+	public static AnalogGyro gyro = new AnalogGyro(0);
+	
 	
 	
 	// Controller Interfaces
@@ -38,6 +45,9 @@ public class RobotMap {
 	
 	
 	// Pneumatics - give them some slack, their just kinda bloated
-
+	public static Compressor compressor = new Compressor(0);
+	public static DoubleSolenoid piston1 = new DoubleSolenoid(1, 1, 2);
+	public static DoubleSolenoid piston2 = new DoubleSolenoid(2, 3, 4);
+	
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE
 }
