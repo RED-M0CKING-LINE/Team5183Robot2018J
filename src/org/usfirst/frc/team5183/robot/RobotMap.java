@@ -21,7 +21,7 @@ public class RobotMap {
 	public static AnalogGyro gyro;
 	
 	// Controller Interfaces
-	public final static XboxController m_ctrl = new XboxController(0); //Xbox Controller on port 0 of the DS
+	public static XboxController m_ctrl; //Xbox Controller on port 0 of the DS
 	/** Axis raw numbers - don't touch these **/
 	public static final int L_X_AXIS = 0;
 	public static final int L_Y_AXIS = 1;
@@ -42,13 +42,14 @@ public class RobotMap {
 	public static double AUTON_MAX_SPEED_R; // Max auton speed backwards
 	
 	// Pneumatics - give them some slack, their just kinda bloated
-	public static Compressor compressor;
-	public static DoubleSolenoid piston1;
-	public static DoubleSolenoid piston2;
+	// public static Compressor compressor;
+	// public static DoubleSolenoid piston1;
+	// public static DoubleSolenoid piston2;
 	
 	public static void init() {
 		/** this method initializes all of the variables for the entire robot system **/
 		
+		m_ctrl = new XboxController(0);
 		MOTORS_L = new Spark(0); //Left side motors on channel 0
 		MOTORS_R = new Spark(1); //Right side motors on channel 1
 		gyro = new AnalogGyro(0);
@@ -56,9 +57,9 @@ public class RobotMap {
 		MAXOUTPUT = 0.9;
 		AUTON_MAX_SPEED_F = 0.5;
 		AUTON_MAX_SPEED_R = -0.5;
-		compressor = new Compressor(0);
-		piston1 = new DoubleSolenoid(1, 1, 2);
-		piston2 = new DoubleSolenoid(2, 3, 4);
+		// compressor = new Compressor(0);
+		// piston1 = new DoubleSolenoid(1, 1, 2);
+		// piston2 = new DoubleSolenoid(2, 3, 4);
 	}
 	
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE

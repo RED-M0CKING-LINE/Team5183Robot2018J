@@ -4,7 +4,6 @@ package org.usfirst.frc.team5183.robot;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
 import org.usfirst.frc.team5183.robot.auton.*;
-import org.usfirst.frc5183.RobotBuilder.OI;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,12 +16,10 @@ public class Robot extends IterativeRobot {
     
 	Command autonCommand;
 	SendableChooser<Command> autonChooser;
-    public static OI oi;
     
 	@Override
 	public void robotInit() {
         RobotMap.init();
-        oi = new OI();
 
 		// Robot-Wide initialization code
 		RobotMap.MOTORS_L.enableDeadbandElimination(true);
@@ -67,7 +64,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// called periodically during operator control
         Scheduler.getInstance().run();
-		RobotMap.DRIVE.arcadeDrive(RobotMap.L_Y_AXIS, RobotMap.R_X_AXIS, true);
+		RobotMap.DRIVE.arcadeDrive(RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
 	}
 	
     @Override
