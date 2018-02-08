@@ -64,7 +64,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// called periodically during operator control
         Scheduler.getInstance().run();
-		RobotMap.DRIVE.arcadeDrive(RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
+		RobotMap.DRIVE.arcadeDrive(-RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
 	}
 	
     @Override
