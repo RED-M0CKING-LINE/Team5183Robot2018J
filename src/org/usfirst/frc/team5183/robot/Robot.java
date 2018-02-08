@@ -4,6 +4,8 @@ package org.usfirst.frc.team5183.robot;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
 import org.usfirst.frc.team5183.robot.auton.*;
+import org.usfirst.frc.team5183.robot.commands.Motors;
+import org.usfirst.frc.team5183.robot.commands.Pneumatics;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -58,6 +60,8 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopInit() {
+    	Motors M = new Motors();
+    	M.stopAll();
     }
 
 	@Override
@@ -65,6 +69,14 @@ public class Robot extends IterativeRobot {
 		// called periodically during operator control
         Scheduler.getInstance().run();
 		RobotMap.DRIVE.arcadeDrive(-RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
+		
+		if(RobotMap.m_ctrl.getYButton()) {
+			RobotMap.MOTOR_CLIMB1.set(RobotMap.CLIMB_SPEED);
+			RobotMap.MOTOR_CLIMB2.set(-RobotMap.CLIMB_SPEED);
+		} else {
+			RobotMap.MOTOR_CLIMB1.set(0);
+			RobotMap.MOTOR_CLIMB2.set(0);
+		}
 	}
 	
     @Override

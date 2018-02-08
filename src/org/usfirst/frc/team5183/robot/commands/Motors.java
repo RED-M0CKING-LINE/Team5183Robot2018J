@@ -50,4 +50,11 @@ public class Motors {
 		RobotMap.MOTORS_L.set(0);
 		RobotMap.MOTORS_R.set(0);
 	}
+	public void stopAll() {
+		/* this will force all motors to stop moving */
+		RobotMap.MOTORS_L.set(0);
+		RobotMap.MOTORS_R.set(0);
+		RobotMap.MOTOR_CLIMB1.set(0);
+		RobotMap.MOTOR_CLIMB2.set(0);
+	}
 }
