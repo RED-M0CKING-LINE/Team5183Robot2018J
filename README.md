@@ -1,7 +1,7 @@
 # Team5183Robot2018J
 ## FRC Team 5183, 2018 Robot Java9 Programming README
 
-Java Version: JDK9
+Java Version: JDK8
 
 IDE: Eclipse - Latest Release (Currently Oxygen)
 
@@ -15,34 +15,24 @@ IDE: Eclipse - Latest Release (Currently Oxygen)
 
 #### Lead Programmer: Ethan A.
 - Nicknames: M0ck, redmocckingline, MockTeacher03, Mock (see the trend?)
-- Contact: redmockingline@gmail.com or this GitHub account
+- Contact: ashleye5183@gmail.com or this GitHub account
 - Side-Jobs: Drive Team, Stratagy, Electrical
-- Notes: I am the lead programmer for the team and I also manage the repo
+- Notes: I am the lead programmer for the team and I also manage this repo
 
 
-
-Ain't this a mess currently...
+[to be extended]
 
 
 ### File Tree: 
 
 ```
 / - this is where ALL of the files are
-  bin/org/usfirst/frc/team5183/robot/ - magic
-    Robot.class - magic
-    
-  build/org/usfirst/frc/team5183/robot/ - magic
-    Robot.class - magic
-    
-  src/org/usfirst/frc/team5183/robot/ - THIS IS WHERE THE ROBOT CODE IS
+
+src/org/usfirst/frc/team5183/robot/ - THIS IS WHERE THE ROBOT CODE IS
      Robot.java - The robot code
-    
-  .classpath - magic
-  .gitattributes - magic
-  .project - magic
-  LICENSE - the regulations of use and distrabution. aka, the license
-  build.properties - magic
-  build.xml - magic
+  
   README.md - The README for these files. Also known as, what you are reading right now
   
+  
+  ANYTHING NOT LISTED IS SIMPLY NOT UPDATED, I DONT KNOW WHAT ITS FOR, ITS COMMON KNOWLEDGE, OR IT DOES NOT MATTER
 ```
