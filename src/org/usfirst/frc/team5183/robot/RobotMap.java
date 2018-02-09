@@ -46,8 +46,8 @@ public class RobotMap {
 	public static double CLIMB_SPEED;
 	
 	// Pneumatics - give them some slack, their just kinda bloated
-	// public static Compressor compressor;
-	// public static DoubleSolenoid piston1;
+	public static Compressor compressor;
+	public static DoubleSolenoid piston1;
 	// public static DoubleSolenoid piston2;
 	
 	public static void init() {
@@ -64,9 +64,9 @@ public class RobotMap {
 		AUTON_MAX_SPEED_F = 0.5;
 		AUTON_MAX_SPEED_R = -0.5;
 		CLIMB_SPEED = 1;
-		// compressor = new Compressor(0);
-		// piston1 = new DoubleSolenoid(1, 1, 2);
-		// piston2 = new DoubleSolenoid(2, 3, 4);
+		compressor = new Compressor(0);
+		piston1 = new DoubleSolenoid(0, 1, 2);
+		// piston2 = new DoubleSolenoid(1, 3, 4);
 	}
 	
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE

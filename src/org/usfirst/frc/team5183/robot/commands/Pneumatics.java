@@ -10,16 +10,11 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Pneumatics extends Subsystem {
 	
-	// public Compressor c = new Compressor(0);
-	// public DoubleSolenoid piston1 = RobotMap.piston1;
+	//public DoubleSolenoid piston1 = RobotMap.piston1;
 	// public DoubleSolenoid piston2 = RobotMap.piston2;
 	
-	// boolean enabled = c.enabled();
-	// boolean pressureSwitch = c.getPressureSwitchValue();
-	// double current = c.getCompressorCurrent();
-	
 	public void start() { // starts all the pneumatic systems
-		// c.setClosedLoopControl(true);
+		//c.setClosedLoopControl(true);
 	} 
 	
     // Set the default command for a subsystem here.
@@ -30,6 +25,6 @@ public class Pneumatics extends Subsystem {
     
     @Override
     public void periodic() {
-    	// c.setClosedLoopControl(true);
+    	//c.setClosedLoopControl(true);
     }
 }

@@ -7,6 +7,8 @@ import org.usfirst.frc.team5183.robot.auton.*;
 import org.usfirst.frc.team5183.robot.commands.Motors;
 import org.usfirst.frc.team5183.robot.commands.Pneumatics;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,6 +20,7 @@ public class Robot extends IterativeRobot {
     
 	Command autonCommand;
 	SendableChooser<Command> autonChooser;
+	public Compressor c = new Compressor(0);
     
 	@Override
 	public void robotInit() {
@@ -41,8 +44,14 @@ public class Robot extends IterativeRobot {
 		autonChooser.addObject("Start Right Auton", new autonStartCenter()); // right start auton option
 		SmartDashboard.putData("Autonomous Mode Chooser", autonChooser);
 		//TODO GET THE SELECTION FOR STARTING POSITION FROM THE SMART DASHBOARD AND MAKE IT WORK
+		
+		boolean enabled = c.enabled();
+		double current = c.getCompressorCurrent();
 	}
 
+	@Override
+	public void robotPeriodic() {
+	}
 	
 	@Override
 	public void autonomousInit() {
@@ -62,6 +71,7 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	Motors M = new Motors();
     	M.stopAll();
+    	RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
     }
 
 	@Override
@@ -76,6 +86,14 @@ public class Robot extends IterativeRobot {
 		} else {
 			RobotMap.MOTOR_CLIMB1.set(0);
 			RobotMap.MOTOR_CLIMB2.set(0);
+		}
+		
+		if(RobotMap.m_ctrl.getAButton()) {
+			RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
+		} else if(RobotMap.m_ctrl.getBButton()) {
+			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
+		} else {
+			RobotMap.piston1.set(DoubleSolenoid.Value.kOff);
 		}
 	}
 	
