@@ -58,9 +58,11 @@ public class Robot extends IterativeRobot {
 		// autonomous initialization code
 		autonCommand = (Command) autonChooser.getSelected();
 		autonCommand.start();
+    	Motors M = new Motors();
+    	M.move(0.1, 0.1, 0.5);
+    	M.stopAll();
 	}
 
-	
 	@Override
 	public void autonomousPeriodic() {
 		// called periodically during autonomous
@@ -71,7 +73,6 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	Motors M = new Motors();
     	M.stopAll();
-    	RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
     }
 
 	@Override
@@ -90,10 +91,8 @@ public class Robot extends IterativeRobot {
 		
 		if(RobotMap.m_ctrl.getAButton()) {
 			RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
-		} else if(RobotMap.m_ctrl.getBButton()) {
-			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
 		} else {
-			RobotMap.piston1.set(DoubleSolenoid.Value.kOff);
+			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
 		}
 	}
 	

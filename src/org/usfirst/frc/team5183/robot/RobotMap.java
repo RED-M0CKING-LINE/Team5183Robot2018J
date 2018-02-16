@@ -18,6 +18,7 @@ public class RobotMap {
 	public static Spark MOTORS_R; //Right side motors on channel 1
 	public static Spark MOTOR_CLIMB1; //Motor for climbing motor 1 on channel 2
 	public static Spark MOTOR_CLIMB2; //Motor for climbing motor 2 on channel 3
+	public static Spark MOTOR_LIFT;
 	
 	// Gyro
 	public static AnalogGyro gyro;
@@ -48,7 +49,7 @@ public class RobotMap {
 	// Pneumatics - give them some slack, their just kinda bloated
 	public static Compressor compressor;
 	public static DoubleSolenoid piston1;
-	// public static DoubleSolenoid piston2;
+	public static DoubleSolenoid piston2;
 	
 	public static void init() {
 		/** this method initializes all of the variables for the entire robot system **/
@@ -58,6 +59,7 @@ public class RobotMap {
 		MOTORS_R = new Spark(1); //Right side motors on channel 1
 		MOTOR_CLIMB1 = new Spark(2); //Motor for climbing motor 1 on channel 2
 		MOTOR_CLIMB2 = new Spark(3); //Motor for climbing motor 2 on channel 3
+		MOTOR_LIFT = new Spark(4); //Motor fir the lift system to lift the cube. On channel 4
 		gyro = new AnalogGyro(0);
 		DRIVE = new DifferentialDrive(MOTORS_L, MOTORS_R);
 		MAXOUTPUT = 0.9;
@@ -65,8 +67,8 @@ public class RobotMap {
 		AUTON_MAX_SPEED_R = -0.5;
 		CLIMB_SPEED = 1;
 		compressor = new Compressor(0);
-		piston1 = new DoubleSolenoid(0, 1, 2);
-		// piston2 = new DoubleSolenoid(1, 3, 4);
+		piston1 = new DoubleSolenoid(0, 0, 1);
+		// piston2 = new DoubleSolenoid(1, 2, 3);
 	}
 	
 	// Measurements - USE THESE FOR FINE TUNING THE ROBOT AND HAVE MOVEMENT PERSISTANCE
