@@ -12,6 +12,11 @@ public class Motors {
 	 * these commands are for drive train movement only.
 	 */
 	
+	public static void driveTrain() {
+		/* This is the teleop drive train for the robot */
+		RobotMap.DRIVE.arcadeDrive(-RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
+	}
+	
 	public void move(double left, double right, double time) {
 		/* this is  command used to move the robot on a timer
 		 * @param left - sets to move the left side motors

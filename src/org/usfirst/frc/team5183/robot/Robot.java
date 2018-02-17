@@ -79,31 +79,37 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// called periodically during operator control
         Scheduler.getInstance().run();
-		RobotMap.DRIVE.arcadeDrive(-RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
-		
+		Motors.driveTrain();
 		if(RobotMap.m_ctrl.getYButton()) {
 			RobotMap.MOTOR_CLIMB1.set(RobotMap.CLIMB_SPEED);
 			RobotMap.MOTOR_CLIMB2.set(-RobotMap.CLIMB_SPEED);
+			Motors.driveTrain();
 		} else if(RobotMap.m_ctrl.getXButton()) {
 			RobotMap.MOTOR_CLIMB1.set(-RobotMap.CLIMB_SPEED);
 			RobotMap.MOTOR_CLIMB2.set(RobotMap.CLIMB_SPEED);
+			Motors.driveTrain();
 		} else {
 			RobotMap.MOTOR_CLIMB1.set(0);
 			RobotMap.MOTOR_CLIMB2.set(0);
+			Motors.driveTrain();
 		}
 		
 		if(RobotMap.m_ctrl.getAButton()) {
 			RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
 			RobotMap.piston2.set(DoubleSolenoid.Value.kForward);
+			Motors.driveTrain();
 		} else {
 			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
 			RobotMap.piston2.set(DoubleSolenoid.Value.kReverse);
+			Motors.driveTrain();
 		}
 		
 		if(RobotMap.m_ctrl.getBButton()) {
 			RobotMap.piston3.set(DoubleSolenoid.Value.kForward);
+			Motors.driveTrain();
 		} else {
 			RobotMap.piston3.set(DoubleSolenoid.Value.kReverse);
+			Motors.driveTrain();
 		}
 	}
 	
