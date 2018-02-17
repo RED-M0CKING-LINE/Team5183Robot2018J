@@ -32,7 +32,7 @@ public class Motors {
 		stop();
 	}
 	
-	public void turnC(double speed, double angle, String clock) {
+	public void turn(double speed, double angle, String clock) {
 		/* this command is for turning the robot. 
 		 * @param speed - how fast the robot should move
 		 * @param angle - what angle the robot should stop at

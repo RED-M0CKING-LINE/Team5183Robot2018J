@@ -2,7 +2,6 @@ package org.usfirst.frc.team5183.robot.auton;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5183.robot.commands.Motors;
-import org.usfirst.frc.team5183.robot.commands.Pneumatics;
 
 /**
  *

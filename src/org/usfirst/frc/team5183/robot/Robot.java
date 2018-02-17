@@ -5,7 +5,6 @@ package org.usfirst.frc.team5183.robot;
 import org.usfirst.frc.team5183.robot.RobotMap;
 import org.usfirst.frc.team5183.robot.auton.*;
 import org.usfirst.frc.team5183.robot.commands.Motors;
-import org.usfirst.frc.team5183.robot.commands.Pneumatics;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -45,8 +44,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Mode Chooser", autonChooser);
 		//TODO GET THE SELECTION FOR STARTING POSITION FROM THE SMART DASHBOARD AND MAKE IT WORK
 		
-		boolean enabled = c.enabled();
-		double current = c.getCompressorCurrent();
+		// boolean enabled = c.enabled();
+		// double current = c.getCompressorCurrent();
 	}
 
 	@Override
@@ -59,7 +58,7 @@ public class Robot extends IterativeRobot {
 		autonCommand = (Command) autonChooser.getSelected();
 		autonCommand.start();
     	Motors M = new Motors();
-    	M.move(0.1, 0.1, 0.5);
+    	M.turn(0.1, 30, "cc");
     	M.stopAll();
 	}
 
