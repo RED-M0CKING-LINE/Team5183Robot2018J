@@ -122,4 +122,4 @@ public class Robot extends IterativeRobot {
 		// called periodically during test mode
 	}
 }
-// TODO get pneumatics working, setup auton selection and make it work, and start Auton Configuration
+// TODO get auton selector to work

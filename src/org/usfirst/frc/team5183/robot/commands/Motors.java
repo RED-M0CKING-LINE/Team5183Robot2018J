@@ -41,13 +41,12 @@ public class Motors {
 		
 		if(clock == "c") {
 			RobotMap.MOTORS_L.set(speed);
-			RobotMap.MOTORS_R.set(-speed);
+			RobotMap.MOTORS_R.set(speed);
 		}else if(clock == "cc") {
 			RobotMap.MOTORS_L.set(-speed);
-			RobotMap.MOTORS_R.set(speed);
-		}else { //DEFAULT CLOCKWISE
-			RobotMap.MOTORS_L.set(speed);
 			RobotMap.MOTORS_R.set(-speed);
+		}else { //DEFAULT CLOCKWISE
+			println("SYNTAX ERROR: TURN NOT PERFORMED. ROTATION DIRECTION NOT SPECIFIED IN CALL TO METHOD");
 		}
 	}
 	private void stop() {
