@@ -50,7 +50,7 @@ public class RobotMap {
 	public static Compressor compressor;
 	public static DoubleSolenoid piston1;
 	public static DoubleSolenoid piston2;
-	public static DoubleSolenoid piston3;
+	public static int lift;
 	
 	
 	public static void init() {
@@ -69,8 +69,8 @@ public class RobotMap {
 		AUTON_MAX_SPEED_R = -0.5;
 		CLIMB_SPEED = 1;
 		compressor = new Compressor(0); // what else would this be?
-		piston1 = new DoubleSolenoid(0, 0, 1); // first piston for the lift
-		piston2 = new DoubleSolenoid(0, 2, 3); // second piston for the lift
-		piston3 = new DoubleSolenoid(0, 4, 5); // piston for grabber on the lift system
+		piston1 = new DoubleSolenoid(0, 0, 1); // solenoid for the lift
+		piston2 = new DoubleSolenoid(0, 2, 3); // piston for grabber on the lift system
+		lift = 0; //lift starts down
 	}
 }

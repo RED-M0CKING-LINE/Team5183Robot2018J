@@ -9,6 +9,7 @@ import org.usfirst.frc.team5183.robot.commands.Motors;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -78,37 +79,39 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// called periodically during operator control
         Scheduler.getInstance().run();
-		Motors.driveTrain();
+		Motors.driveTrain(2, 0);
 		if(RobotMap.m_ctrl.getYButton()) {
 			RobotMap.MOTOR_CLIMB1.set(RobotMap.CLIMB_SPEED);
 			RobotMap.MOTOR_CLIMB2.set(-RobotMap.CLIMB_SPEED);
-			Motors.driveTrain();
+			Motors.driveTrain(2, 0);
 		} else if(RobotMap.m_ctrl.getXButton()) {
 			RobotMap.MOTOR_CLIMB1.set(-RobotMap.CLIMB_SPEED);
 			RobotMap.MOTOR_CLIMB2.set(RobotMap.CLIMB_SPEED);
-			Motors.driveTrain();
+			Motors.driveTrain(2, 0);
 		} else {
 			RobotMap.MOTOR_CLIMB1.set(0);
 			RobotMap.MOTOR_CLIMB2.set(0);
-			Motors.driveTrain();
+			Motors.driveTrain(2, 0);
 		}
 		
-		if(RobotMap.m_ctrl.getAButton()) {
+		if(RobotMap.lift == 0 && RobotMap.m_ctrl.getBumperPressed(Hand.kLeft)) {
 			RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
-			RobotMap.piston2.set(DoubleSolenoid.Value.kForward);
-			Motors.driveTrain();
-		} else {
+			Motors.driveTrain(2, 0.33);
+			RobotMap.lift = 1;
+		} else if(RobotMap.lift == 1 && RobotMap.m_ctrl.getBumperPressed(Hand.kLeft)) {
 			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
-			RobotMap.piston2.set(DoubleSolenoid.Value.kReverse);
-			Motors.driveTrain();
+			Motors.driveTrain(2, 0);
+			RobotMap.lift = 0;
+		} else {
+			Motors.driveTrain(2, 0);
 		}
 		
-		if(RobotMap.m_ctrl.getBButton()) {
-			RobotMap.piston3.set(DoubleSolenoid.Value.kForward);
-			Motors.driveTrain();
+		if(RobotMap.m_ctrl.getBumper(Hand.kRight)) {
+			RobotMap.piston2.set(DoubleSolenoid.Value.kForward);
+			Motors.driveTrain(2, 0.5); // drive that is slowed down when grabbing the power cube
 		} else {
-			RobotMap.piston3.set(DoubleSolenoid.Value.kReverse);
-			Motors.driveTrain();
+			RobotMap.piston2.set(DoubleSolenoid.Value.kReverse);
+			Motors.driveTrain(2, 0);
 		}
 	}
 	
@@ -116,7 +119,7 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
     }
-	
+    
 	@Override
 	public void testPeriodic() {
 		// called periodically during test mode

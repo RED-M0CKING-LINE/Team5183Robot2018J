@@ -12,9 +12,24 @@ public class Motors {
 	 * these commands are for drive train movement only.
 	 */
 	
-	public static void driveTrain() {
-		/* This is the teleop drive train for the robot */
-		RobotMap.DRIVE.arcadeDrive(-RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
+	public static void driveTrain(double a, double less) {
+		/* This is the teleop drive train for the robot 
+		 * this is a exponential curve... i believe... 
+		 * @param a - this is the value to determine the how aggressive the curve for movement curve.
+		 * @param a 	a <= 1		this is a linear acceleration
+		 * @param a 	1<a<=2		this is the exponential curve. lower the value of a, more aggressive the curve
+		 * 
+		 *  @param less -  */
+		if(1<a && a<=2) {
+			/* this is the exponential curve */
+			RobotMap.DRIVE.arcadeDrive(-1*(((java.lang.Math.pow(a, RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS)))-(1.0 + less))), java.lang.Math.pow(a, RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS))-(1.0 + less));
+		} else if(a<=1) {
+			/* this defaults to a normal linear acceleration */
+			RobotMap.DRIVE.arcadeDrive(-RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS));
+		} else {
+			/* this is the default drive. set as squared imports */
+			RobotMap.DRIVE.arcadeDrive(-RobotMap.m_ctrl.getRawAxis(RobotMap.R_X_AXIS), RobotMap.m_ctrl.getRawAxis(RobotMap.L_Y_AXIS), true);
+		}
 	}
 	
 	public void move(double left, double right, double time) {
@@ -46,7 +61,8 @@ public class Motors {
 			RobotMap.MOTORS_L.set(-speed);
 			RobotMap.MOTORS_R.set(-speed);
 		}else { //DEFAULT CLOCKWISE
-			println("SYNTAX ERROR: TURN NOT PERFORMED. ROTATION DIRECTION NOT SPECIFIED IN CALL TO METHOD");
+			RobotMap.MOTORS_L.set(-speed);
+			RobotMap.MOTORS_R.set(-speed);
 		}
 	}
 	private void stop() {
