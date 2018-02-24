@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class autonStartDefault extends Command {
-
+	boolean done = false;
     public autonStartDefault() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -28,7 +28,11 @@ public class autonStartDefault extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	if(done) {
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
 
     // Called once after isFinished returns true
