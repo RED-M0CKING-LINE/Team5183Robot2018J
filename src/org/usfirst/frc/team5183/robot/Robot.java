@@ -18,15 +18,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
     
-	Command autonCommand;
-	SendableChooser<Command> autonChooser;
+	private int mode = 1; // initialize default mode
+	private SendableChooser<Object> autoCommand;
+	SendableChooser<Object> chooser = new SendableChooser<>();
 	public Compressor c = new Compressor(0);
+	Motors M = new Motors();
     
 	@Override
 	public void robotInit() {
         RobotMap.init();
-
-		// Robot-Wide initialization code
+        // Robot-Wide initialization code
 		RobotMap.MOTORS_L.enableDeadbandElimination(true);
 		RobotMap.MOTORS_R.enableDeadbandElimination(true);
 		RobotMap.MOTORS_L.setSafetyEnabled(true);
@@ -37,12 +38,11 @@ public class Robot extends IterativeRobot {
 		RobotMap.MOTORS_L.setInverted(true);
 		
 		// Auton Selection Configuration
-		autonChooser = new SendableChooser<Command>();
-		autonChooser.addDefault("Start Default Auton", new autonStartDefault()); // default start auton option
-		autonChooser.addObject("Start Left Auton", new autonStartLeft()); // left start auton option
-		autonChooser.addObject("Start Center Auton", new autonStartCenter()); // center start auton option
-		autonChooser.addObject("Start Right Auton", new autonStartCenter()); // right start auton option
-		SmartDashboard.putData("Autonomous Mode Chooser", autonChooser);
+		chooser.addDefault("Start Default Auton", 0); // default start auton option
+		chooser.addObject("Start Left Auton", 1); // left start auton option
+		chooser.addObject("Start Center Auton", 2); // center start auton option
+		chooser.addObject("Start Right Auton", 3); // right start auton option
+		SmartDashboard.putData("Autonomous Mode Chooser", chooser);
 		//TODO GET THE SELECTION FOR STARTING POSITION FROM THE SMART DASHBOARD AND MAKE IT WORK
 		
 		// boolean enabled = c.enabled();
@@ -51,14 +51,12 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void robotPeriodic() {
-	}
+	} 
 	
 	@Override
 	public void autonomousInit() {
 		// autonomous initialization code
-		autonCommand = (Command) autonChooser.getSelected();
-		autonCommand.start();
-    	Motors M = new Motors();
+		mode = (int) chooser.getSelected();
     	M.turn(0.1, 30, "cc");
     	M.stopAll();
 	}
@@ -66,7 +64,35 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		// called periodically during autonomous
-		Scheduler.getInstance().run();
+		switch(mode) {
+		case 1:
+			// Left Auton
+			M.move(.5, .5, 1);
+			mode = 99;
+			break;
+		case 2:
+			// Center Auton
+			M.move(.5, .5, 1);
+			mode = 99;
+			break;
+		case 3:
+			// Right Auton
+			M.move(.5, .5, 1);
+			mode = 99;
+			break;
+		case 99:
+			// fall back so it does not repeat an auton mode
+			break;
+		case 0:
+			// Default Auton
+			M.move(.5, .5, 1);
+			mode = 99;
+			break;
+		default:
+			M.move(.5, .5, 1);
+			mode = 99;
+			break;
+		}
 	}
 
     @Override
@@ -83,7 +109,7 @@ public class Robot extends IterativeRobot {
 		if(RobotMap.m_ctrl.getYButton()) {
 			RobotMap.MOTOR_CLIMB1.set(RobotMap.CLIMB_SPEED);
 			RobotMap.MOTOR_CLIMB2.set(-RobotMap.CLIMB_SPEED);
-			Motors.driveTrain(2, 0);
+			Motors.driveTrain(2, 0); 
 		} else if(RobotMap.m_ctrl.getXButton()) {
 			RobotMap.MOTOR_CLIMB1.set(-RobotMap.CLIMB_SPEED);
 			RobotMap.MOTOR_CLIMB2.set(RobotMap.CLIMB_SPEED);

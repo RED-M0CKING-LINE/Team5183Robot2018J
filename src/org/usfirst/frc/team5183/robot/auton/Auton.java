@@ -29,63 +29,6 @@ public class Auton extends Robot{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-/*	
-*	public void autonInit() {
-*		
-*		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-*		
-*		if(autonSelected == AutonLeft) {
-*			//left side start auton
-*			if(gameData.charAt(0) == 'R') {
-*				// drive forwards to a position for defense or make way to left side
-*			}else if(gameData.charAt(0) == 'L') {
-*				// goes to left side switch and attempts to place block
-*				
-*			}else {
-*				// Default Auton based off starting position
-*			}
-*			
-*		}else if(autonSelected == AutonCenter) {
-*			// center start auton
-*			if(gameData.charAt(1) == 'R') {
-*				// goes to right side switch and attempts to place block
-*			}else if(gameData.charAt(1) == 'L') {
-*				// goes to left side switch and attempts to place block
-*				
-*			}else {
-*				// Default Auton based off starting position
-*			}
-*			
-*		}else if(autonSelected == AutonRight) {
-*			// right side start auton
-*			if(gameData.charAt(0) == 'R') {
-*				// goes to right side switch and attempts to place block
-*			}else if(gameData.charAt(0) == 'L') {
-*				// drives forwards to a position for defense or make way to left side
-*				
-*			}else {
-*				// Default Auton based off starting position
-*			}
-*			
-*		}else {
-*			// Default [Drive 12FT straight]
-*			
-*		}
-*	}
-*/
+
 	
 }

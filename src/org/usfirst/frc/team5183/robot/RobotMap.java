@@ -71,6 +71,6 @@ public class RobotMap {
 		compressor = new Compressor(0); // what else would this be?
 		piston1 = new DoubleSolenoid(0, 0, 1); // solenoid for the lift
 		piston2 = new DoubleSolenoid(0, 2, 3); // piston for grabber on the lift system
-		lift = 0; //lift starts down
+		lift = 0; //lift starts down  
 	}
 }
