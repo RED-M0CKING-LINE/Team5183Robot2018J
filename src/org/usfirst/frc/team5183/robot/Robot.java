@@ -3,14 +3,13 @@
 package org.usfirst.frc.team5183.robot;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
-import org.usfirst.frc.team5183.robot.auton.*;
+import org.usfirst.frc.team5183.robot.commands.Auton;
 import org.usfirst.frc.team5183.robot.commands.Motors;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,11 +18,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
     
 	private int mode = 1; // initialize default mode
-	private SendableChooser<Object> autoCommand;
+	private SendableChooser<Object> autoCommand;  //TODO make getters and setters
 	SendableChooser<Object> chooser = new SendableChooser<>();
 	public Compressor c = new Compressor(0);
 	Motors M = new Motors();
     
+	public SendableChooser<Object> getAutoCommand() {
+		return autoCommand;
+	}
+
+	public void setAutoCommand(SendableChooser<Object> autoCommand) {
+		this.autoCommand = autoCommand;
+	}
+
 	@Override
 	public void robotInit() {
         RobotMap.init();
@@ -38,12 +45,11 @@ public class Robot extends IterativeRobot {
 		RobotMap.MOTORS_L.setInverted(true);
 		
 		// Auton Selection Configuration
-		chooser.addDefault("Start Default Auton", 0); // default start auton option
-		chooser.addObject("Start Left Auton", 1); // left start auton option
-		chooser.addObject("Start Center Auton", 2); // center start auton option
-		chooser.addObject("Start Right Auton", 3); // right start auton option
+		chooser.addDefault("default", 0); // default start auton option
+		chooser.addObject("left", 1); // left start auton option
+		chooser.addObject("center", 2); // center start auton option
+		chooser.addObject("right", 3); // right start auton option
 		SmartDashboard.putData("Autonomous Mode Chooser", chooser);
-		//TODO GET THE SELECTION FOR STARTING POSITION FROM THE SMART DASHBOARD AND MAKE IT WORK
 		
 		// boolean enabled = c.enabled();
 		// double current = c.getCompressorCurrent();
@@ -57,27 +63,29 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// autonomous initialization code
 		mode = (int) chooser.getSelected();
-    	M.turn(0.1, 30, "cc");
     	M.stopAll();
 	}
 
 	@Override
 	public void autonomousPeriodic() {
 		// called periodically during autonomous
+		Auton auto = new Auton();
 		switch(mode) {
 		case 1:
 			// Left Auton
-			M.move(.5, .5, 1);
+			mode = 99;
+			auto.autonStartDefault();
 			mode = 99;
 			break;
 		case 2:
 			// Center Auton
-			M.move(.5, .5, 1);
+			mode = 99;
+			auto.autonStartDefault();
 			mode = 99;
 			break;
 		case 3:
 			// Right Auton
-			M.move(.5, .5, 1);
+			auto.autonStartDefault();
 			mode = 99;
 			break;
 		case 99:
@@ -85,12 +93,13 @@ public class Robot extends IterativeRobot {
 			break;
 		case 0:
 			// Default Auton
-			M.move(.5, .5, 1);
+			mode = 99;
+			auto.autonStartDefault();
 			mode = 99;
 			break;
 		default:
-			M.move(.5, .5, 1);
 			mode = 99;
+			M.move(.5, .5, 3);
 			break;
 		}
 	}
@@ -119,25 +128,34 @@ public class Robot extends IterativeRobot {
 			RobotMap.MOTOR_CLIMB2.set(0);
 			Motors.driveTrain(2, 0);
 		}
-		
-		if(RobotMap.lift == 0 && RobotMap.m_ctrl.getBumperPressed(Hand.kLeft)) {
-			RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
+		if(RobotMap.mlift == 0 && RobotMap.m_ctrl.getTriggerAxis(Hand.kLeft) > 30) {
+			RobotMap.MOTOR_LIFT.set(-RobotMap.LIFT_SPEED);
 			Motors.driveTrain(2, 0.33);
-			RobotMap.lift = 1;
-		} else if(RobotMap.lift == 1 && RobotMap.m_ctrl.getBumperPressed(Hand.kLeft)) {
-			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
-			Motors.driveTrain(2, 0);
-			RobotMap.lift = 0;
+		} else if(RobotMap.mlift == 1 && RobotMap.m_ctrl.getTriggerAxis(Hand.kLeft) > 30) {
+			RobotMap.MOTOR_LIFT.set(RobotMap.LIFT_SPEED);
+			Motors.driveTrain(2, 0.33);
 		} else {
-			Motors.driveTrain(2, 0);
+			Motors.driveTrain(2, 0.33);
 		}
 		
+		if(RobotMap.plift == 0 && RobotMap.m_ctrl.getBumperPressed(Hand.kLeft)) {
+			RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
+			Motors.driveTrain(2, 0.33);
+			RobotMap.plift = 1;
+		} else if(RobotMap.plift == 1 && RobotMap.m_ctrl.getBumperPressed(Hand.kLeft)) {
+			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
+			Motors.driveTrain(2, 0);
+			RobotMap.plift = 0;
+		}
 		if(RobotMap.m_ctrl.getBumper(Hand.kRight)) {
 			RobotMap.piston2.set(DoubleSolenoid.Value.kForward);
 			Motors.driveTrain(2, 0.5); // drive that is slowed down when grabbing the power cube
 		} else {
 			RobotMap.piston2.set(DoubleSolenoid.Value.kReverse);
 			Motors.driveTrain(2, 0);
+		}
+		if(RobotMap.m_ctrl.getBackButton()) {
+			M.stopEtc();
 		}
 	}
 	
@@ -151,4 +169,4 @@ public class Robot extends IterativeRobot {
 		// called periodically during test mode
 	}
 }
-// TODO get auton selector to work
+
