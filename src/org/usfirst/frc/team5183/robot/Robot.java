@@ -127,16 +127,14 @@ public class Robot extends IterativeRobot {
 			RobotMap.MOTOR_CLIMB1.set(0);
 			RobotMap.MOTOR_CLIMB2.set(0);
 			Motors.driveTrain(2, 0);
-		}
+		} // climbing motors
 		if(RobotMap.mlift == 0 && RobotMap.m_ctrl.getTriggerAxis(Hand.kLeft) > 30) {
 			RobotMap.MOTOR_LIFT.set(-RobotMap.LIFT_SPEED);
 			Motors.driveTrain(2, 0.33);
 		} else if(RobotMap.mlift == 1 && RobotMap.m_ctrl.getTriggerAxis(Hand.kLeft) > 30) {
 			RobotMap.MOTOR_LIFT.set(RobotMap.LIFT_SPEED);
 			Motors.driveTrain(2, 0.33);
-		} else {
-			Motors.driveTrain(2, 0.33);
-		}
+		} // pully system lift
 		
 		if(RobotMap.plift == 0 && RobotMap.m_ctrl.getBumperPressed(Hand.kLeft)) {
 			RobotMap.piston1.set(DoubleSolenoid.Value.kForward);
@@ -146,17 +144,27 @@ public class Robot extends IterativeRobot {
 			RobotMap.piston1.set(DoubleSolenoid.Value.kReverse);
 			Motors.driveTrain(2, 0);
 			RobotMap.plift = 0;
-		}
+		} // pneumatic piston lift
 		if(RobotMap.m_ctrl.getBumper(Hand.kRight)) {
 			RobotMap.piston2.set(DoubleSolenoid.Value.kForward);
 			Motors.driveTrain(2, 0.5); // drive that is slowed down when grabbing the power cube
 		} else {
 			RobotMap.piston2.set(DoubleSolenoid.Value.kReverse);
 			Motors.driveTrain(2, 0);
-		}
+		} // grabber
+		if(RobotMap.m_ctrl.getTriggerAxis(Hand.kRight) > 30) {
+			RobotMap.MOTOR_ARM.set(.2);
+		} else if(RobotMap.m_ctrl.getBumper(Hand.kRight)) {
+			RobotMap.MOTOR_ARM.set(-.2);
+		} // arm
+		if(RobotMap.m_ctrl.getAButton()) {
+			RobotMap.MOTOR_HOOK.set(RobotMap.HOOK_SPEED);
+		} else if(RobotMap.m_ctrl.getBButton()) {
+			RobotMap.MOTOR_HOOK.set(-RobotMap.HOOK_SPEED);
+		} // hook
 		if(RobotMap.m_ctrl.getBackButton()) {
 			M.stopEtc();
-		}
+		} // emergency stop
 	}
 	
     @Override

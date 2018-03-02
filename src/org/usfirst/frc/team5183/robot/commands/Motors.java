@@ -74,6 +74,8 @@ public class Motors {
 		RobotMap.MOTOR_CLIMB1.set(0);
 		RobotMap.MOTOR_CLIMB2.set(0);
 		RobotMap.MOTOR_LIFT.set(0);
+		RobotMap.MOTOR_HOOK.set(0);
+		RobotMap.MOTOR_ARM.set(0);
 	}
 	
 	public void stopAll() {
@@ -83,5 +85,7 @@ public class Motors {
 		RobotMap.MOTOR_CLIMB1.set(0);
 		RobotMap.MOTOR_CLIMB2.set(0);
 		RobotMap.MOTOR_LIFT.set(0);
+		RobotMap.MOTOR_HOOK.set(0);
+		RobotMap.MOTOR_ARM.set(0);
 	}
 }

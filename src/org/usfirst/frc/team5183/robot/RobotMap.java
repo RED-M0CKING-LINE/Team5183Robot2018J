@@ -19,6 +19,9 @@ public class RobotMap {
 	public static Spark MOTOR_CLIMB1; //Motor for climbing motor 1 on channel 2
 	public static Spark MOTOR_CLIMB2; //Motor for climbing motor 2 on channel 3
 	public static Spark MOTOR_LIFT; //Motor for the lift motor on channel 4
+	public static Spark MOTOR_ARM; //Motor for the arm on channel 5
+	public static Spark MOTOR_HOOK; //Motor for the hook lift system
+	
 	
 	// Gyro
 	public static AnalogGyro gyro;
@@ -44,6 +47,7 @@ public class RobotMap {
 	public static double AUTON_MAX_SPEED_F; // Max auton speed forward
 	public static double AUTON_MAX_SPEED_R; // Max auton speed backwards
 	public static double CLIMB_SPEED;
+	public static double HOOK_SPEED;
 	public static double LIFT_SPEED;
 	public static int mlift;
 	
@@ -63,17 +67,20 @@ public class RobotMap {
 		MOTOR_CLIMB1 = new Spark(2); //Motor for climbing motor 1 on channel 2
 		MOTOR_CLIMB2 = new Spark(3); //Motor for climbing motor 2 on channel 3
 		MOTOR_LIFT = new Spark(4); //Motor for the lift system to lift the cube. On channel 4
+		MOTOR_ARM = new Spark(5); // motor for the arm movement on channel 5
+		MOTOR_HOOK = new Spark(6); // motor for the hook lift on channel 6
 		gyro = new AnalogGyro(0);
 		DRIVE = new DifferentialDrive(MOTORS_L, MOTORS_R);
 		MAXOUTPUT = 0.9;
 		AUTON_MAX_SPEED_F = 0.5;
 		AUTON_MAX_SPEED_R = -0.5;
 		CLIMB_SPEED = 1;
+		HOOK_SPEED = .06; 
 		LIFT_SPEED = .1;
 		mlift = 0; //mechanical lift starts down
-		compressor = new Compressor(0); // what else would this be?
-		piston1 = new DoubleSolenoid(0, 0, 1); // solenoid for the lift
-		piston2 = new DoubleSolenoid(0, 2, 3); // piston for grabber on the lift system
+		compressor = new Compressor(1); // what else would this be?
+		piston1 = new DoubleSolenoid(1, 0, 1); // solenoid for the lift
+		piston2 = new DoubleSolenoid(1, 2, 3); // piston for grabber on the lift system
 		plift = 0; //pneumatic lift starts down  
 	}
 }
