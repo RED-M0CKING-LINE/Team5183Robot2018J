@@ -5,6 +5,7 @@ package org.usfirst.frc.team5183.robot.commands;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 public class Motors {
 	/*
@@ -41,10 +42,8 @@ public class Motors {
 		
 		RobotMap.MOTORS_L.set(left);
 		RobotMap.MOTORS_R.set(right);
-		
 		Timer.delay(time);
-		
-		stop();
+		stopMove();
 	}
 	
 	public void turn(double speed, double angle, String clock) {
@@ -53,7 +52,8 @@ public class Motors {
 		 * @param angle - what angle the robot should stop at
 		 * @param clock - "c" or "cc". 'c' for clockwise or 'cc' for counter-clockwise
 		 */
-		
+		Motors M = new Motors();
+		M.stopMove();
 		if(clock == "c") {
 			RobotMap.MOTORS_L.set(speed);
 			RobotMap.MOTORS_R.set(speed);
@@ -65,16 +65,27 @@ public class Motors {
 			RobotMap.MOTORS_R.set(-speed);
 		}
 	}
-	private void stop() {
+	private void stopMove() {
 		/* this is to stop the robot in its tracks */
 		RobotMap.MOTORS_L.set(0);
 		RobotMap.MOTORS_R.set(0);
 	}
+	public void stopEtc() {
+		RobotMap.MOTOR_CLIMB1.set(0);
+		RobotMap.MOTOR_CLIMB2.set(0);
+		RobotMap.MOTOR_LIFT.set(0);
+		RobotMap.MOTOR_HOOK.set(0);
+		RobotMap.MOTOR_ARM.set(0);
+	}
+	
 	public void stopAll() {
 		/* this will force all motors to stop moving */
 		RobotMap.MOTORS_L.set(0);
 		RobotMap.MOTORS_R.set(0);
 		RobotMap.MOTOR_CLIMB1.set(0);
 		RobotMap.MOTOR_CLIMB2.set(0);
+		RobotMap.MOTOR_LIFT.set(0);
+		RobotMap.MOTOR_HOOK.set(0);
+		RobotMap.MOTOR_ARM.set(0);
 	}
 }

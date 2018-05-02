@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5183.robot.auton;
+package org.usfirst.frc.team5183.robot.commands;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
 import org.usfirst.frc.team5183.robot.Robot;
@@ -8,24 +8,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Auton extends Robot{
+public class Auton {
 	/*
 	 * This class contains all Auton Conditions
 	 */
 	
-	boolean autonFinished = false;
 	String gameData = DriverStation.getInstance().getGameSpecificMessage();
 	
-	public boolean autonStartLeft() {
-		return true;
+	public int autonStartLeft() {
+		return 99;
 	}
 	
-	public boolean autonStartCenter() {
-		return true;
+	public int autonStartCenter() {
+		return 99;
 	}
 	
-	public boolean autonStartRight() {
-		return true;
+	public int autonStartRight() {
+		return 99;
+	}
+	
+	public int autonStartDefault() {
+		Motors M = new Motors();
+    	M.move(RobotMap.AUTON_MAX_SPEED_F, RobotMap.AUTON_MAX_SPEED_F, 5);
+		return 99;
 	}
 	
 	
