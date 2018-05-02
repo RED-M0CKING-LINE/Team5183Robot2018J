@@ -1,12 +1,12 @@
 package org.usfirst.frc.team5183.robot.commands;
 
 import org.usfirst.frc.team5183.robot.RobotMap;
-import org.usfirst.frc.team5183.robot.Robot;
+// import org.usfirst.frc.team5183.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.command.Command;
+// import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Auton {
 	/*
