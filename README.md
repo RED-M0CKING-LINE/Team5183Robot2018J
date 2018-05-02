@@ -12,7 +12,7 @@ IDE: Eclipse - Latest Release (Currently Oxygen)
 ### Code Contributors:
 
 #### 5183 Lead Programmer: Ethan A.
-- Nicknames: M0ck, redmocckingline, MockTeacher03, Mock (see the trend?)
+- Nicknames: M0ck, redmockingline, MockTeacher03, Mock (see the trend?)
 - Contact: ashleye5183@gmail.com or this GitHub account
 - Side-Jobs: Drive Team, Stratagy, Electrical
 - Notes: I am the only programmer for the team and I also manage this repo
